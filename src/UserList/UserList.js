@@ -31,9 +31,28 @@ class UserList extends React.Component {
 
 
   newUserChangeHandler = (event) => {
-   this.setState({
+    this.setState({
       newUserName: event.target.value
-   }) 
+    })
+  }
+
+  onAddNewUserClick = () => {
+    const request = {
+      method: 'POST',
+      body: JSON.stringify({ name: this.state.newUserName })
+    }
+
+    this.setState({       //dodany setState przed fetchem wyswietla 'Loading" zanim fetch pobierze dane
+      isLoadingUsers: true
+    })
+
+    fetch('https://fir-sandbox-65a96.firebaseio.com/jfddl5-users.json', request)
+      .then(response => {
+        this.loadUsers()
+        this.setState({
+          newUserName: ''
+        })
+      })
   }
 
   render() {
@@ -46,8 +65,9 @@ class UserList extends React.Component {
             this.state.users ?
               <div>
                 <Forms
-                newUserName={this.state.newUserName}
-                newUserChangeHandler={this.newUserChangeHandler}
+                  newUserName={this.state.newUserName}
+                  newUserChangeHandler={this.newUserChangeHandler}
+                  onAddNewUserClick={this.onAddNewUserClick}
                 />
                 <List
                   users={this.state.users}
