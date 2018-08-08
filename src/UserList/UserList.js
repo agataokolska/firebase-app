@@ -9,6 +9,7 @@ class UserList extends React.Component {
   state = {
     users: null,
     isLoadingUsers: false,
+    newUserName: ''
 
   }
 
@@ -28,6 +29,13 @@ class UserList extends React.Component {
       })
   }
 
+
+  newUserChangeHandler = (event) => {
+   this.setState({
+      newUserName: event.target.value
+   }) 
+  }
+
   render() {
     return (
       <div>
@@ -37,7 +45,10 @@ class UserList extends React.Component {
             :
             this.state.users ?
               <div>
-                <Forms />
+                <Forms
+                newUserName={this.state.newUserName}
+                newUserChangeHandler={this.newUserChangeHandler}
+                />
                 <List
                   users={this.state.users}
 

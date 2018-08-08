@@ -8,6 +8,9 @@ const Forms = (props) => (
             value={props.newUserName}
             onChange={props.newUserChangeHandler}
         />
+        <button>
+            Add user
+        </button>
     </div>
 )
 

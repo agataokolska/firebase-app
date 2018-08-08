@@ -16,7 +16,7 @@ const List = (props) => (
 
 )
 
-List.PropTypes = {
+List.propTypes = {
     users: PropTypes.array.isRequired
 }
 
