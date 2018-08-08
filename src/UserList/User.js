@@ -29,7 +29,7 @@ class User extends React.Component {
                         onClick={this.editToggle}
                     >
                         Cancel!
-          </button>
+                    </button>
                     <input
                         type="text"
                         onChange={this.onUserNameChangeHandler}
@@ -44,7 +44,7 @@ class User extends React.Component {
                         }}
                     >
                         Save!
-          </button>
+                     </button>
                 </div>
                 :
                 <div>
@@ -52,7 +52,7 @@ class User extends React.Component {
                         onClick={this.editToggle}
                     >
                         Edit!
-        </button>
+                    </button>
                     {this.props.user.name}
                 </div>
         )
