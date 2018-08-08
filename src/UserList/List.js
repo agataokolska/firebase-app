@@ -1,10 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const List = (props) => (
     <div>
-        LOADED
+        {
+            props.users.map(user => (
+                <div
+                    key={user.key}
+                >
+                    {user.name}
+                </div>
+            ))
+        }
     </div>
 
 )
+
+List.PropTypes = {
+    users: PropTypes.array.isRequired
+}
 
 export default List
