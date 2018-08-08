@@ -55,8 +55,21 @@ class UserList extends React.Component {
       })
   }
 
-  onEditUserHandler = (key,newName) => {
-    console.log(key,newName)
+  onEditUserHandler = (key, newName) => {
+    const request = {
+      method: 'PATCH',
+      body: JSON.stringify({ name: newName })
+    }
+
+    this.setState({
+      isLoadingUsers: true
+    })
+
+    fetch(`https://fir-sandbox-65a96.firebaseio.com/jfddl5-users/${key}.json`, request)
+      .then(response => {
+        this.loadUsers()
+      })
+
   }
 
   render() {
