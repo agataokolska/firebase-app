@@ -40,8 +40,8 @@ class User extends React.Component {
                             this.props.onEditUserHandler(
                                 this.props.user.key,
                                 this.state.userName
-                            ).then(() => this.editToggle() )
-                            
+                            )
+                            this.editToggle()   
                         }}
                     >
                         Save!
