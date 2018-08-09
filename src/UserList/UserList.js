@@ -86,11 +86,16 @@ class UserList extends React.Component {
                   onAddNewUserClick={this.onAddNewUserClick}
                 />
                 <Search 
-                searchPhrase = {this.state.searchPhrase}
+                searchPhrase = {
+                  this.state.searchPhrase
+                }
                 onSearchPhraseChanged = {this.onSearchPhraseChanged}
                 />
                 <List
-                  users={this.state.users}
+                   users = {this.state.users.filter(
+                    user => user.name.indexOf(this.state.searchPhrase) !== -1
+                  )
+                }
                   onEditUserHandler={this.onEditUserHandler}
 
                 />
