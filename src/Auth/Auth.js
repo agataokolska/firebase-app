@@ -1,8 +1,16 @@
 import React from 'react'
 
+
+const isLoggedIn = false
+
 const Auth = (props) => (
     <div>
-        {props.children}
+        {isLoggedIn ?
+            
+            props.children
+            :
+            'not logged in!!'
+            }
     </div>
 )
 
