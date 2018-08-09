@@ -1,17 +1,31 @@
 import React from 'react'
+import LogInForms from './LogInForms';
 
 
-const isLoggedIn = false
+class Auth extends React.Component {
+    state = {
+        isLoggedIn: false
+    }
 
-const Auth = (props) => (
-    <div>
-        {isLoggedIn ?
-            
-            props.children
-            :
-            'not logged in!!'
-            }
-    </div>
-)
+    onLoginClickHandler = () => {
+        this.setState({
+            isLoggedIn: true
+        })
+    }
+    render() {
+        return (
+            <div>
+                {this.state.isLoggedIn ?
+
+                    this.props.children
+                    :
+                    <LogInForms
+                        onLoginClickHandler={this.onLoginClickHandler}
+                    />
+                }
+            </div>
+        )
+    }
+}
 
 export default Auth
