@@ -15,18 +15,18 @@ class UserList extends React.Component {
 
   }
 
-  loadUsers = () => {
+  initUsersSync = () => {
 
     this.setState({
       isLoadingUsers: true
     })
 
     //fetch('https://fir-sandbox-65a96.firebaseio.com/jfddl5-users.json')
-    database.ref('/jfddl5-users').once(
+    database.ref('/jfddl5-users').on(
       'value',
       snapshot =>{
         const data = snapshot.val()
-        
+
         this.setState({
           users: mapObjectToArray(data),        // users: Object.entries(data || {}).map(item => (
           isLoadingUsers: false             // { id: item[0], ...item[1] })), zamiast tego mamy mapObjectToArray z utils.js
@@ -54,7 +54,7 @@ class UserList extends React.Component {
 
     fetch('https://fir-sandbox-65a96.firebaseio.com/jfddl5-users.json', request)
       .then(response => {
-        this.loadUsers()
+       // this.loadUsers()
         this.setState({
           newUserName: ''
         })
@@ -73,7 +73,7 @@ class UserList extends React.Component {
 
     fetch(`https://fir-sandbox-65a96.firebaseio.com/jfddl5-users/${key}.json`, request)
       .then(response => {
-        this.loadUsers()
+       // this.loadUsers()
       })
 
   }
@@ -101,7 +101,7 @@ class UserList extends React.Component {
               :
               <Default
                 label={'Click'}
-                clickHandler={this.loadUsers}
+                clickHandler={this.initUsersSync}
               />
         }
       </div>
