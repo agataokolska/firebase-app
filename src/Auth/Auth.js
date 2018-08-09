@@ -1,6 +1,6 @@
 import React from 'react'
 import LogInForms from './LogInForms';
-import {auth} from '../firebaseConfig'
+import {auth, googleProvider} from '../firebaseConfig'
 
 class Auth extends React.Component {
     state = {
@@ -21,9 +21,15 @@ class Auth extends React.Component {
             }
         })
     }
+
     onLoginClickHandler = () => {
-       
+       auth.signInWithPopup(googleProvider)
+       .catch((error) => {
+        console.log('error',error)   
+        alert('błąd logowania')
+       })
     }
+
     render() {
         return (
             <div>
