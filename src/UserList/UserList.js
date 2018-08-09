@@ -23,8 +23,8 @@ class UserList extends React.Component {
 
     //fetch('https://fir-sandbox-65a96.firebaseio.com/jfddl5-users.json')
     database.ref('/jfddl5-users').once('value')
-      .then(snapshot=>snapshot.val())
-      .then(data =>{
+      .then(snapshot =>{
+        const data = snapshot.val()
         this.setState({
           users: mapObjectToArray(data),        // users: Object.entries(data || {}).map(item => (
           isLoadingUsers: false             // { id: item[0], ...item[1] })), zamiast tego mamy mapObjectToArray z utils.js
