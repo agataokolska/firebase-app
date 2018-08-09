@@ -41,6 +41,7 @@ class User extends React.Component {
                                 this.props.user.key,
                                 this.state.userName
                             )
+                            this.editToggle()
                         }}
                     >
                         Save!
