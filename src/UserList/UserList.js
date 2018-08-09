@@ -5,13 +5,14 @@ import List from './List'
 import { mapObjectToArray } from '../utils.js'
 import Forms from './Forms'
 import {database} from '../firebaseConfig'
-
+import Search from './Search'
 
 class UserList extends React.Component {
   state = {
     users: null,
     isLoadingUsers: false,
-    newUserName: ''
+    newUserName: '',
+    searchPhrase: ''
 
   }
 
@@ -65,6 +66,11 @@ class UserList extends React.Component {
     database.ref(`/jfddl5-users/${key}`).update({name:newName})
   }
 
+  onSearchPhraseChanged = event => {
+    this.setState({
+      searchPhrase: event.target.value
+    })
+  }
   render() {
     return (
       <div>
@@ -78,6 +84,10 @@ class UserList extends React.Component {
                   newUserName={this.state.newUserName}
                   newUserChangeHandler={this.newUserChangeHandler}
                   onAddNewUserClick={this.onAddNewUserClick}
+                />
+                <Search 
+                searchPhrase = {this.state.searchPhrase}
+                onSearchPhraseChanged = {this.onSearchPhraseChanged}
                 />
                 <List
                   users={this.state.users}
