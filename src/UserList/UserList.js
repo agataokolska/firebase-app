@@ -72,6 +72,10 @@ class UserList extends React.Component {
     })
   }
   render() {
+
+    const filteredUsers = this.state.users && this.state.users.filter(      //jeśli this.state.users jest not true to przerywa działlanie wyrazenia, skonczył na fałszywym wyrazeniu wiec zwraca null a jeśli this.state.users jest tablica prawdziwa to robi na tablicy filter
+      user => user.name.indexOf(this.state.searchPhrase) !== -1
+    )
     return (
       <div>
         {
@@ -92,10 +96,7 @@ class UserList extends React.Component {
                 onSearchPhraseChanged = {this.onSearchPhraseChanged}
                 />
                 <List
-                   users = {this.state.users.filter(
-                    user => user.name.indexOf(this.state.searchPhrase) !== -1
-                  )
-                }
+                   users = {filteredUsers}
                   onEditUserHandler={this.onEditUserHandler}
 
                 />
