@@ -4,6 +4,8 @@ import Loading from './Loading';
 import List from './List'
 import { mapObjectToArray } from '../utils.js'
 import Forms from './Forms'
+import {database} from '../firebaseConfig'
+
 
 class UserList extends React.Component {
   state = {
@@ -19,9 +21,10 @@ class UserList extends React.Component {
       isLoadingUsers: true
     })
 
-    fetch('https://fir-sandbox-65a96.firebaseio.com/jfddl5-users.json')
-      .then(response => response.json())
-      .then(data => {
+    //fetch('https://fir-sandbox-65a96.firebaseio.com/jfddl5-users.json')
+    database.ref('/jfddl5-users').once('value')
+      .then(snapshot=>snapshot.val())
+      .then(data =>{
         this.setState({
           users: mapObjectToArray(data),        // users: Object.entries(data || {}).map(item => (
           isLoadingUsers: false             // { id: item[0], ...item[1] })), zamiast tego mamy mapObjectToArray z utils.js
