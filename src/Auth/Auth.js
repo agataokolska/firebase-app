@@ -10,17 +10,19 @@ class Auth extends React.Component {
     componentDidMount(){
         auth.onAuthStateChanged(user => {
             if(user) {
-                console.log('logged in')
+                this.setState({
+                    isLoggedIn: true
+                })
             }
             else {
-                console.log('not logged')
+                this.setState({
+                    isLoggedIn: false
+                })
             }
         })
     }
     onLoginClickHandler = () => {
-        this.setState({
-            isLoggedIn: true
-        })
+       
     }
     render() {
         return (
