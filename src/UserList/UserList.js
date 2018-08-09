@@ -71,7 +71,7 @@ class UserList extends React.Component {
     //   isLoadingUsers: true
     // })
 
-    fetch(`https://fir-sandbox-65a96.firebaseio.com/jfddl5-users/${key}.json`, request)
+   return fetch(`https://fir-sandbox-65a96.firebaseio.com/jfddl5-users/${key}.json`, request)
       .then(response => {
        // this.loadUsers()
       })
