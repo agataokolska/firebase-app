@@ -36,6 +36,13 @@ class Auth extends React.Component {
     onEmailChangedHandler = event => this.setState({loginEmail:event.target.value})
     onPasswordChangedHandler = event => this.setState({logInPassword:event.target.value})
 
+    onLoginByEmailClickHandler = () =>{
+        auth.signInWithEmailAndPassword(this.state.loginEmail,this.state.logInPassword)
+        .catch((error) =>{
+            console.log(error)
+            alert('błąd logowania!')
+        })
+    }
     render() {
         return (
             <div>
