@@ -32,17 +32,19 @@ class Auth extends React.Component {
                 alert('błąd logowania')
             })
     }
+    logInFunctions = {
+        onEmailChangedHandler: event => this.setState({ loginEmail: event.target.value }),
+        onPasswordChangedHandler: event => this.setState({ logInPassword: event.target.value }),
 
-    onEmailChangedHandler = event => this.setState({loginEmail:event.target.value})
-    onPasswordChangedHandler = event => this.setState({logInPassword:event.target.value})
-
-    onLoginByEmailClickHandler = () =>{
-        auth.signInWithEmailAndPassword(this.state.loginEmail,this.state.logInPassword)
-        .catch((error) =>{
-            console.log(error)
-            alert('błąd logowania!')
-        })
+        onLoginByEmailClickHandler: () => {
+            auth.signInWithEmailAndPassword(this.state.loginEmail, this.state.logInPassword)
+                .catch((error) => {
+                    console.log(error)
+                    alert('błąd logowania!')
+                })
+        }
     }
+
     render() {
         return (
             <div>
@@ -55,9 +57,9 @@ class Auth extends React.Component {
                         logInProps={{
                             emailValue: this.state.loginEmail,
                             passwordValue: this.state.logInPassword,
-                            onEmailChangedHandler: this.onEmailChangedHandler,
-                            onPasswordChangedHandler: this.onPasswordChangedHandler,
-                            onLoginByEmailClickHandler: this.onLoginByEmailClickHandler
+                            onEmailChangedHandler: this.logInFunctions.onEmailChangedHandler,
+                            onPasswordChangedHandler: this.logInFunctions.onPasswordChangedHandler,
+                            onLoginByEmailClickHandler: this.logInFunctions.onLoginByEmailClickHandler
 
                         }}
                         signUpProps={{
