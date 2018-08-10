@@ -62,28 +62,37 @@ class Auth extends React.Component {
     render() {
         return (
             <div>
-                {this.state.isLoggedIn ?
+                {
+                    this.state.isLoggedIn ?
+                        <div>
+                            <div>
+                                <button
+                                    onClick={() => auth.signOut()}
+                                >
+                                    Log out!
+                            </button>
+                            </div>
+                            {this.props.children}
+                        </div>
+                        :
+                        <LogInForms
+                            onLoginByGoogleClickHandler={this.onLoginByGoogleClickHandler}
+                            logInProps={{
+                                emailValue: this.state.loginEmail,
+                                passwordValue: this.state.logInPassword,
+                                onEmailChangedHandler: this.logInFunctions.onEmailChangedHandler,
+                                onPasswordChangedHandler: this.logInFunctions.onPasswordChangedHandler,
+                                onLoginByEmailClickHandler: this.logInFunctions.onLoginByEmailClickHandler
 
-                    this.props.children
-                    :
-                    <LogInForms
-                        onLoginByGoogleClickHandler={this.onLoginByGoogleClickHandler}
-                        logInProps={{
-                            emailValue: this.state.loginEmail,
-                            passwordValue: this.state.logInPassword,
-                            onEmailChangedHandler: this.logInFunctions.onEmailChangedHandler,
-                            onPasswordChangedHandler: this.logInFunctions.onPasswordChangedHandler,
-                            onLoginByEmailClickHandler: this.logInFunctions.onLoginByEmailClickHandler
-
-                        }}
-                        signUpProps={{
-                            emailValue: this.state.signUpEmail,
-                            passwordValue: this.state.signUpPassword,
-                            onEmailChangedHandler: this.signUpFunctions.onEmailChangedHandler,
-                            onPasswordChangedHandler: this.signUpFunctions.onPasswordChangedHandler,
-                            onSignUpClickHandler: this.signUpFunctions.onSignUpByEmailClickHandler
-                        }}
-                    />
+                            }}
+                            signUpProps={{
+                                emailValue: this.state.signUpEmail,
+                                passwordValue: this.state.signUpPassword,
+                                onEmailChangedHandler: this.signUpFunctions.onEmailChangedHandler,
+                                onPasswordChangedHandler: this.signUpFunctions.onPasswordChangedHandler,
+                                onSignUpClickHandler: this.signUpFunctions.onSignUpByEmailClickHandler
+                            }}
+                        />
                 }
             </div>
         )
