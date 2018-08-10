@@ -11,7 +11,7 @@ const LogInForms = (props) => (
             emailValue={props.emailValue}
             passwordValue={props.passwordValue}
             onEmailChangedHandler={props.onEmailChangedHandler}
-            onPasswordChangeHandler={props.onPasswordChangeHandler}
+            onPasswordChangedHandler={props.onPasswordChangedHandler}
             onLoginClickHandler={props.onLoginByEmailClickHandler}
         />
     </div>

@@ -6,14 +6,14 @@ const LoginByEmailAndPassword = (props) => (
         <div>
             <input
                 type="email"
-                onChange={props.onEmailChangeHandler}
+                onChange={props.onEmailChangedHandler}
                 value={props.emailValue}
             />
         </div>
         <div>
             <input
                 type="password"
-                onChange={props.onPasswordChangeHandler}
+                onChange={props.onPasswordChangedHandler}
                 value={props.passwordValue}
             />
         </div>

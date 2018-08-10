@@ -4,7 +4,10 @@ import { auth, googleProvider } from '../firebaseConfig'
 
 class Auth extends React.Component {
     state = {
-        isLoggedIn: false
+        isLoggedIn: false,
+        loginEmail: '',
+        logInPassword: ''
+
     }
 
     componentDidMount() {
@@ -30,6 +33,9 @@ class Auth extends React.Component {
             })
     }
 
+    onEmailChangedHandler = event => this.setState({loginEmail:event.target.value})
+    onPasswordChangedHandler = event => this.setState({logInPassword:event.target.value})
+
     render() {
         return (
             <div>
@@ -39,6 +45,11 @@ class Auth extends React.Component {
                     :
                     <LogInForms
                         onLoginByGoogleClickHandler={this.onLoginByGoogleClickHandler}
+                        emailValue={this.state.loginEmail}
+                        passwordValue={this.state.logInPassword}
+                        onEmailChangedHandler={this.onEmailChangedHandler}
+                        onPasswordChangedHandler={this.onPasswordChangedHandler}
+                        onLoginByEmailClickHandler={this.onLoginByEmailClickHandler}
                     />
                 }
             </div>
