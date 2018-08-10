@@ -1,15 +1,15 @@
 import React from 'react'
 import LogInForms from './LogInForms';
-import {auth, googleProvider} from '../firebaseConfig'
+import { auth, googleProvider } from '../firebaseConfig'
 
 class Auth extends React.Component {
     state = {
         isLoggedIn: false
     }
 
-    componentDidMount(){
+    componentDidMount() {
         auth.onAuthStateChanged(user => {
-            if(user) {
+            if (user) {
                 this.setState({
                     isLoggedIn: true
                 })
@@ -22,12 +22,12 @@ class Auth extends React.Component {
         })
     }
 
-    onLoginClickHandler = () => {
-       auth.signInWithPopup(googleProvider)
-       .catch((error) => {
-        console.log('error',error)   
-        alert('błąd logowania')
-       })
+    onLoginByGoogleClickHandler = () => {
+        auth.signInWithPopup(googleProvider)
+            .catch((error) => {
+                console.log('error', error)
+                alert('błąd logowania')
+            })
     }
 
     render() {
@@ -38,7 +38,7 @@ class Auth extends React.Component {
                     this.props.children
                     :
                     <LogInForms
-                        onLoginClickHandler={this.onLoginClickHandler}
+                        onLoginByGoogleClickHandler={this.onLoginByGoogleClickHandler}
                     />
                 }
             </div>

@@ -6,7 +6,7 @@ const LoginByGoogle = (props) => (
         <button
             onClick={props.onLoginClickHandler}
         >
-            Button
+            Zaloguj przez google
        </button>
     </div>
 )

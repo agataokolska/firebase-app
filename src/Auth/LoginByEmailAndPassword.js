@@ -20,7 +20,9 @@ const LoginByEmailAndPassword = (props) => (
         <div>
             <button
                 onClick={props.onLoginClickHandler}
-            />
+            >
+            Zaloguj!
+            </button>
         </div>
     </div>
 )
