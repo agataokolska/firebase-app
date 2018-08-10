@@ -6,8 +6,9 @@ class Auth extends React.Component {
     state = {
         isLoggedIn: false,
         loginEmail: '',
-        logInPassword: ''
-
+        logInPassword: '',
+        signUpEmail: '',
+        signUpPassword: ''
     }
 
     componentDidMount() {
@@ -45,6 +46,19 @@ class Auth extends React.Component {
         }
     }
 
+    signUpFunctions = {
+        onEmailChangedHandler: event => this.setState({ signUpEmail: event.target.value }),
+        onPasswordChangedHandler: event => this.setState({ signUpPassword: event.target.value }),
+        onSignUpByEmailClickHandler: () => {
+            auth.createUserWithEmailAndPassword(this.state.signUpEmail, this.state.signUpPassword)
+                .catch((error) => {
+                    console.log(error)
+                    alert('błąd logowania!')
+                })
+        }
+    }
+
+
     render() {
         return (
             <div>
@@ -63,11 +77,11 @@ class Auth extends React.Component {
 
                         }}
                         signUpProps={{
-                            emailValue: this.state.loginEmail,
-                            passwordValue: this.state.logInPassword,
-                            onEmailChangedHandler: this.onEmailChangedHandler,
-                            onPasswordChangedHandler: this.onPasswordChangedHandler,
-                            onLoginByEmailClickHandler: this.onLoginByEmailClickHandler
+                            emailValue: this.state.signUpEmail,
+                            passwordValue: this.state.signUpPassword,
+                            onEmailChangedHandler: this.signUpFunctions.onEmailChangedHandler,
+                            onPasswordChangedHandler: this.signUpFunctions.onPasswordChangedHandler,
+                            onSignUpClickHandler: this.signUpFunctions.onSignUpByEmailClickHandler
                         }}
                     />
                 }

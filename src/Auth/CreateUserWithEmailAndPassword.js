@@ -21,7 +21,7 @@ const CreateUserWithEmailAndPassword = (props) => (
             <button
                 onClick={props.onSignUpClickHandler}
             >
-            Zaloguj!
+            Zarejestruj!
             </button>
         </div>
     </div>
